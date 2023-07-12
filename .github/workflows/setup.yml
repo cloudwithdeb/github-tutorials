@@ -10,6 +10,7 @@ on:
 env:
   RESOURCE_GROUP_NAME: "github-resource-group"
   RESOURCE_GROUP_LOCATION: "eastus"
+  KEYVAULT_NAME: "test10101"
 permissions:
   id-token: write
   contents: read
@@ -31,5 +32,5 @@ jobs:
             client-id: ${{ secrets.AZURE_CLIENT_ID }}
             tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         - id: CheckIfKeyvaultExists
-          name: Create resources group
-          run: ./script.sh
+          name: Check if keyvault exists
+          run: ./script.sh ${{ env.KEYVAULT_NAME }} ${{ env.RESOURCE_GROUP_LOCATION }} ${{ env.RESOURCE_GROUP_NAME }}
