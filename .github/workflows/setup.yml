@@ -1,4 +1,4 @@
-name: Github Action demo with azure
+name: Github Action Demo
 on:
   push:
     branches:
