@@ -33,7 +33,7 @@ jobs:
           with:
             subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
             client-id: ${{ secrets.AZURE_CLIENT_ID }}
-            ternant-id: ${{ secrets.AZURE_TERNANT_ID }}
+            tenant-id: ${{ secrets.AZURE_TERNANT_ID }}
         - id: CreateResourceGroup
           name: Create resources group
           run: |
