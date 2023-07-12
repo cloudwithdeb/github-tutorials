@@ -3,17 +3,9 @@ on:
   push:
     branches:
       - main
-    branches-ignore:
-      - dev
-      - stage
-      - prod
   pull_request:
     branches:
       - main
-    branches-ignore:
-      - dev
-      - stage
-      - prod
   workflow_dispatch:
 env:
   RESOURCE_GROUP_NAME: "github-resource-group"
