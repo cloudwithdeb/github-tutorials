@@ -36,8 +36,4 @@ jobs:
             tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         - id: CreateResourceGroup
           name: Create resources group
-          run: |
-            az group create \
-            -n ${{ env.RESOURCE_GROUP_NAME }} \
-            -l ${{ env.RESOURCE_GROUP_LOCATION }}
-    
+          run: ./script.sh
