@@ -20,9 +20,9 @@ defaults:
 jobs:
     job1:
       runs-on: ubuntu-latest
-      defaults:
-        run:
-          working-directory: app/users
+    #   defaults:
+    #     run:
+    #       working-directory: app/users
       steps:
         - id: CheckoutRepo
           name: Checkout Repository
