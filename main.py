@@ -9,3 +9,6 @@ def DeleteUser():
 
 def UpdateUser():
     return {"message": "User updated successfully. Thank you!"}
+
+def GetUserById():
+    return {"message": "User by ID"}
