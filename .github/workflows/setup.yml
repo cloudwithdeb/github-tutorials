@@ -13,10 +13,6 @@ env:
 permissions:
   id-token: write
   contents: read
-defaults:
-  run:
-    working-directory: app
-    shell: bash
 jobs:
     job1:
       runs-on: ubuntu-latest
@@ -34,6 +30,6 @@ jobs:
             subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
             client-id: ${{ secrets.AZURE_CLIENT_ID }}
             tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        - id: CreateResourceGroup
+        - id: CheckIfKeyvaultExists
           name: Create resources group
           run: ./script.sh
