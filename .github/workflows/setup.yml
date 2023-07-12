@@ -1,15 +1,51 @@
+name: Github Action demo with azure
 on:
   push:
     branches:
-      - app
+      - main
     branches-ignore:
       - dev
       - stage
       - prod
   pull_request:
     branches:
-      - app
+      - main
+    branches-ignore:
+      - dev
+      - stage
+      - prod
   workflow_dispatch:
+env:
+  RESOURCE_GROUP_NAME: "github-resource-group"
+  RESOURCE_GROUP_LOCATION: "eastus"
+permissions:
+  id-token: write
+  contents: read
+defaults:
+  run:
+    working-directory: app
+    shell: bash
 jobs:
-  job1:
-    runs-on: ubuntu-latest
+    job1:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: app/users
+      steps:
+        - id: CheckoutRepo
+          name: Checkout Repository
+          uses: actions/checkout@v3
+        - id: AzureAuth
+          name: Authenticate With Azure
+          uses: azure/login@v1
+          with:
+            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+            client-id: ${{ secrets.AZURE_CLIENT_ID }}
+            ternant-id: ${{ secrets.AZURE_TERNANT_ID }}
+        - id: CreateResourceGroup
+          name: Create resources group
+          run: |
+            az group create \
+            -n ${{ env.RESOURCE_GROUP_NAME }} \
+            -l ${{ env.RESOURCE_GROUP_LOCATION }}
+    
